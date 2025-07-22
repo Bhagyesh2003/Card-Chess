@@ -1,3 +1,4 @@
+// Description: This code defines a REST controller for user authentication in a Spring Boot application.
 package com.cardchess.auth.controller;
 
 import com.cardchess.auth.entity.User;
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+
+// Controller for user authentication
 public class UserController {
 
     @Autowired private UserRepository userRepository;
     @Autowired private PasswordEncoder passwordEncoder;
     @Autowired private JwtUtil jwtUtil;
 
+    // Endpoint for user registration
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         if (userRepository.existsByEmail(user.getEmail())) {
@@ -27,6 +31,7 @@ public class UserController {
         return ResponseEntity.ok("User registered successfully!");
     }
 
+    // Endpoint for user login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest login) {
         User user = userRepository.findByEmail(login.getEmail())
@@ -39,10 +44,13 @@ public class UserController {
     }
 }
 
+// Data Transfer Objects for Request and Response
 @Data class LoginRequest {
     private String email;
     private String password;
 }
+
+// Response object for authentication
 @Data class AuthResponse {
     private final String token;
 }
