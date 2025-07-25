@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+// This class configures the security settings for the application, including password encoding and HTTP security.
 public class SecurityConfig {
 
     @Bean

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
+// Description: This class provides utility methods for generating JWT tokens for user authentication.
+// It uses the secret key defined in application properties to sign the tokens.
+// The generated token includes the user's email and username, and it is set to expire after 10 hours.
 public class JwtUtil {
 
     @Value("${jwt.secret}")
